@@ -165,9 +165,9 @@
 </template>
 
 <script>
-    import ColorUtils from "@/views/pokedex/utils/ColorUtils";
-    import PokemonTags from "@/views/pokedex/PokemonTags";
-    import PokemonService from "@/views/pokedex/services/PokemonService";
+    import ColorUtils from "@/utils/ColorUtils";
+    import PokemonTags from "@/components/PokemonTags";
+    import PokemonService from "@/services/PokemonService";
 
     /*   class SwipeListener {
            constructor() {

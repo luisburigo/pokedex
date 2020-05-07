@@ -36,8 +36,8 @@
 
 <script>
     import pokedex from "../data/pokedex.json"
-    import ColorUtils from "@/views/pokedex/utils/ColorUtils";
-    import PokemonTags from "@/views/pokedex/PokemonTags";
+    import ColorUtils from "@/utils/ColorUtils";
+    import PokemonTags from "@/components/PokemonTags";
 
     export default {
         name: "Pokedex",
