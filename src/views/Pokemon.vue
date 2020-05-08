@@ -4,7 +4,7 @@
       <div class="pokedex-background"></div>
       <div class="pokedex-header">
         <div class="pokedex-icon text-left --left">
-          <font-awesome-icon icon="arrow-left" @click="$router.push('/pokedex')"/>
+          <font-awesome-icon icon="arrow-left" @click="$router.push('/')"/>
         </div>
         <div class="pokedex-icon text-right --right">
           <font-awesome-icon icon="bars"/>
@@ -289,6 +289,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../style/mixins";
+
   .pokedex {
     padding: 0;
     display: grid;
@@ -306,6 +308,11 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      @include mobile_old {
+        font-size: 25px;
+        margin-bottom: 5px;
+        margin-top: 15px;
+      }
     }
 
     &-title small {
@@ -329,6 +336,9 @@
 
     &-image img {
       max-width: 100%;
+      @include mobile_old {
+        max-width: 80%;
+      }
     }
 
     &-box-bottom {
@@ -359,6 +369,10 @@
       height: 100%;
       position: relative;
       padding-bottom: 15px;
+      @include mobile_old {
+        font-size: 12px;
+        padding-bottom: 10px;
+      }
     }
 
     &-header.--active {
@@ -383,6 +397,9 @@
     grid-gap: 10px;
     padding-top: 10px;
     margin-bottom: 30px;
+    @include mobile_old {
+      margin-bottom: 20px;
+    }
 
     &.--two-columns {
       grid-template-columns: 1fr 1fr;
@@ -405,12 +422,18 @@
       font-weight: 600;
       color: grey;
       margin-bottom: 5px;
+      @include mobile_old {
+        font-size: 9px;
+      }
     }
 
     &-item-description {
       font-size: 15px;
       font-weight: 600;
       color: #434343;
+      @include mobile_old {
+        font-size: 12px;
+      }
     }
   }
 
