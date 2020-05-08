@@ -40,7 +40,7 @@
     import PokemonTags from "@/components/PokemonTags";
 
     const pokemons = [...pokedex.pokemon];
-    const quantidadeListagem = 10;
+    const quantidadeListagem = window.innerHeight > 700 ? 12 : 10;
 
     export default {
         name: "Pokedex",
