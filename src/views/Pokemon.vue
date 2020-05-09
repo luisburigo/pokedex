@@ -307,10 +307,11 @@
                     return alert("Nenhum pokemon encontrado com este numero!")
                 }
 
-                const pokemonColorClass = ColorUtils.getColorByPokemonType(this.pokemon.type[0]);
                 this.pokemon = PokemonService.getPokemonByNum(num);
                 this.pokemon.stats = PokemonService.getPokemonStatsBaseById(this.pokemon.id);
                 this.pokemon.evolutions = PokemonService.getPokemonEvolutionsByPokemon(this.pokemon);
+
+                const pokemonColorClass = ColorUtils.getColorByPokemonType(this.pokemon.type[0]);
                 ApplicationService.setToolbarColor(pokemonColorClass);
             }
         },
