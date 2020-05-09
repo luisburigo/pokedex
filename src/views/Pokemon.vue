@@ -196,6 +196,7 @@
     import ColorUtils from "@/utils/ColorUtils";
     import PokemonTags from "@/components/PokemonTags";
     import PokemonService from "@/services/PokemonService";
+    import ApplicationService from "@/services/ApplicationService";
 
     /*   class SwipeListener {
            constructor() {
@@ -272,6 +273,7 @@
            console.log('Swipped')
        });*/
 
+
     export default {
         name: "Pokemon",
         components: {PokemonTags},
@@ -301,11 +303,15 @@
             init() {
                 const {num} = this.$route.params;
 
-                if (num) {
-                    this.pokemon = PokemonService.getPokemonByNum(num);
-                    this.pokemon.stats = PokemonService.getPokemonStatsBaseById(this.pokemon.id);
-                    this.pokemon.evolutions = PokemonService.getPokemonEvolutionsByPokemon(this.pokemon);
+                if (!num) {
+                    return alert("Nenhum pokemon encontrado com este numero!")
                 }
+
+                const pokemonColorClass = ColorUtils.getColorByPokemonType(this.pokemon.type[0]);
+                this.pokemon = PokemonService.getPokemonByNum(num);
+                this.pokemon.stats = PokemonService.getPokemonStatsBaseById(this.pokemon.id);
+                this.pokemon.evolutions = PokemonService.getPokemonEvolutionsByPokemon(this.pokemon);
+                ApplicationService.setToolbarColor(pokemonColorClass);
             }
         },
         computed: {

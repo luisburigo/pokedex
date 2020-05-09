@@ -40,8 +40,8 @@
       "density": "4.0"
     }
   ],
-  "theme_color": "black-translucent",
-  "background_color": "#ff7979",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
   "display": "fullscreen",
   "orientation": "portrait"
 }
