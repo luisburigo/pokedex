@@ -13,6 +13,20 @@ class PokemonService {
     static getPokemonStatsBaseById(id) {
         return this.getPokemonStatsById(id).base;
     }
+
+    static getPokemonEvolutionsByPokemon(pokemon) {
+        const evolutions = pokemon.next_evolution;
+
+        if (evolutions && evolutions.length) {
+            return evolutions.map(evolution => this.getPokemonByNum(evolution.num))
+        }
+
+        return [];
+    }
+
+    static getAllPokemons() {
+        return [...pokedex.pokemon];
+    }
 }
 
 export default PokemonService;

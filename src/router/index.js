@@ -15,6 +15,7 @@ const routes = [
         path: '/:num',
         name: 'Pokemon',
         component: Pokemon,
+        props: true
     }
 ];
 
