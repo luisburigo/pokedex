@@ -1,6 +1,6 @@
 {
-  "name": "My Progressive Web Application",
-  "short_name": "Progressive",
+  "name": "Pokedex",
+  "short_name": "Pokedex",
   "start_url": "/?home=true",
   "icons": [
     {
