@@ -38,6 +38,7 @@
     import ColorUtils from "@/utils/ColorUtils";
     import PokemonTags from "@/components/PokemonTags";
     import PokemonService from "../services/PokemonService";
+    import ApplicationService from "@/services/ApplicationService";
 
     const quantidadeListagem = window.innerHeight > 700 ? 12 : 10;
     let pokemons = PokemonService.getAllPokemons();
@@ -53,6 +54,7 @@
         created() {
             pokemons = PokemonService.getAllPokemons();
             this.pokedex = pokemons.splice(0, quantidadeListagem);
+            ApplicationService.setToolbarColor('--white');
         },
         methods: {
             getColor: ColorUtils.getColorByPokemonType,
