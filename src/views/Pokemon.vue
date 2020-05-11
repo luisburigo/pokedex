@@ -36,6 +36,7 @@
                         Base Stats
                     </div>
                     <div class="tab-header"
+                         v-if="pokemon.evolutions.length"
                          @click="selectTab('evolution')"
                          :class="isActiveTab('evolution')">
                         Evolution
@@ -166,11 +167,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-content" v-if="tab == 'evolution'">
+                    <div class="tab-content" v-if="tab == 'evolution' && pokemon.evolutions.length">
                         <div class="evolutions">
-                            <div v-if="pokemon.evolutions.length">
-                                asdasd
-                            </div>
                             <div class="evolution"
                                  :class="getColor(evolution.type[0])" v-for="evolution in pokemon.evolutions"
                                  :key="`Evolution--${evolution.id}`">
