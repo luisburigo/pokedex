@@ -4,7 +4,7 @@
             <div class="pokedex-background"></div>
             <div class="pokedex-header">
                 <div class="pokedex-icon text-left --left">
-                    <font-awesome-icon icon="arrow-left" @click="$router.push('/')"/>
+                    <font-awesome-icon icon="arrow-left" @click="$router.go(-1)"/>
                 </div>
                 <div class="pokedex-icon text-right --right">
                     <font-awesome-icon icon="bars"/>
@@ -168,9 +168,12 @@
                     </div>
                     <div class="tab-content" v-if="tab == 'evolution'">
                         <div class="evolutions">
-                            <router-link :to="`/${evolution.num}`" class="evolution"
-                                         :class="getColor(evolution.type[0])" v-for="evolution in pokemon.evolutions"
-                                         :key="`Evolution--${evolution.id}`">
+                            <div v-if="pokemon.evolutions.length">
+                                asdasd
+                            </div>
+                            <div class="evolution"
+                                 :class="getColor(evolution.type[0])" v-for="evolution in pokemon.evolutions"
+                                 :key="`Evolution--${evolution.id}`">
                                 <div class="evolution-num">
                                     #{{ evolution.num }}
                                 </div>
@@ -180,7 +183,7 @@
                                 <div class="evolution-name">
                                     {{ evolution.name }}
                                 </div>
-                            </router-link>
+                            </div>
                         </div>
                     </div>
                     <div class="tab-content" v-if="tab == 'moves'">
@@ -331,6 +334,7 @@
         watch: {
             "$route.params.num"() {
                 this.init();
+                this.tab = 'about'
             },
         },
     }
