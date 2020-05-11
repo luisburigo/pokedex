@@ -18,7 +18,12 @@ const colors = {
 class ApplicationService {
 
     static setToolbarColor(toolbarColor) {
-        const toolbars = [...document.head.querySelectorAll('[data-toolbar]')];
+        const toolbars = [
+            document.head.querySelector("meta[name=theme-color]"),
+            document.head.querySelector("meta[name=msapplication-navbutton-color]"),
+            document.head.querySelector("meta[name=apple-mobile-web-app-status-bar-style]"),
+        ];
+        console.log(toolbars)
         toolbars.forEach(toolbar => {
             toolbar.setAttribute('content', colors[toolbarColor]);
         });
