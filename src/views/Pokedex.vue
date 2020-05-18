@@ -40,7 +40,7 @@
     import PokemonService from "../services/PokemonService";
     import ApplicationService from "@/services/ApplicationService";
 
-    const quantidadeListagem = window.innerHeight > 700 ? 12 : 10;
+    const quantidadeListagem = 14;
     let pokemons = PokemonService.getAllPokemons();
 
     export default {
@@ -48,7 +48,8 @@
         components: {PokemonTags},
         data() {
             return {
-                pokedex: []
+                pokedex: [],
+                isMobileOld: window.innerWidth <= 400
             }
         },
         created() {
@@ -75,13 +76,15 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "../style/mixins";
+
     .pokedex {
         padding: 15px 25px 0 25px;
         background-color: white;
         display: grid;
 
         &-background {
-            top: -75px;
+            top: -86px;
             right: -90px;
         }
 
@@ -101,13 +104,28 @@
         text-align: left;
         box-shadow: 0 0 15px rgba(0, 0, 0, .15);
         transition: .5s all;
+       /* @include mediaMaxWidth(400px) {
+          flex-wrap: wrap;
+        }*/
+        @include mediaMaxWidth(400px) {
+          justify-content: space-between;
+        }
 
         &:hover {
             box-shadow: 10px 5px 15px rgba(0, 0, 0, .15);
         }
 
         &-stats, &-image {
-            flex: 0 0 50%;
+          @include mediaMaxWidth(400px) {
+            flex: 0 0 50% !important;
+          }
+        }
+
+        &-stats {
+            flex: 0 0 60%;
+            @include mediaMaxWidth(400px) {
+              flex: 0 0 auto !important;
+            }
         }
 
         &-image {
@@ -131,6 +149,9 @@
             color: white;
             font-weight: bold;
             font-size: 15px;
+            @include mediaMaxWidth(400px) {
+               font-size: 12px;
+            }
         }
     }
 </style>

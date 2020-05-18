@@ -98,6 +98,30 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     opacity: .1;
+    animation: infinite pokeball-animation 10s ease, infinite pokeball-opacity 4s ease;
+  }
+
+  @keyframes pokeball-animation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes pokeball-opacity {
+    0% {
+      filter: opacity(.5);
+    }
+
+    50% {
+      filter: opacity(1);
+    }
+
+    100% {
+      filter: opacity(.6);
+    }
   }
 }
 

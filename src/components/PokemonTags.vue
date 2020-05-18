@@ -30,7 +30,6 @@
   }
 
   .tag {
-    width: content-box;
     font-size: 12px;
     padding: .2em .4em;
     background-color: rgba(255, 255, 255, .25);
@@ -43,6 +42,18 @@
 
     .tag {
       margin-right: 5px;
+    }
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .sm {
+    .tag {
+      @include mediaMaxWidth(400px) {
+        font-size: 10px;
+      }
     }
   }
 

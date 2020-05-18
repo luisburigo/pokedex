@@ -170,7 +170,9 @@
                     <div class="tab-content" v-if="tab == 'evolution' && pokemon.evolutions.length">
                         <div class="evolutions">
                             <div class="evolution"
-                                 :class="getColor(evolution.type[0])" v-for="evolution in pokemon.evolutions"
+                                 :class="getColor(evolution.type[0])"
+                                 v-for="evolution in pokemon.evolutions"
+                                 @click="toPokemon(evolution.num)"
                                  :key="`Evolution--${evolution.id}`">
                                 <div class="evolution-num">
                                     #{{ evolution.num }}
