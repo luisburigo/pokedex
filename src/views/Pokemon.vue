@@ -71,32 +71,19 @@
                 </div>
               </div>
               <div class="grid-item">
-                <div class="grid-item-title">GENDER</div>
-                <div class="grid-item-description">
-                  <div>
-                    <font-awesome-icon icon="venus"/>
-                    87,5%
-                  </div>
-                  <div>
-                    <font-awesome-icon icon="mars"/>
-                    12,5%
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
                 <div class="grid-item-title">EGG GROUPS</div>
                 <div class="grid-item-description">
                   {{ getEggGroups }}
                 </div>
               </div>
-            </div>
-            <div class="grid">
               <div class="grid-item">
                 <div class="grid-item-title">EGG CYCLE</div>
                 <div class="grid-item-description">
                   Grass
                 </div>
               </div>
+            </div>
+            <div class="grid">
             </div>
           </div>
           <div class="tab-content" v-if="tab == 'base-stats'">
@@ -188,8 +175,14 @@
               </div>
             </div>
           </div>
-          <div class="tab-content" v-if="tab == 'moves'">
-
+          <div class="tab-content pokemon-moves" v-if="tab == 'moves'">
+            <div class="grid scrollable-y">
+              <div class="grid-item" v-for="move in pokemon.moves" :key="`move-${move.name}`">
+                <div class="grid-item-description">
+                    {{ move.name }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -317,10 +310,9 @@
                 const pokemonApi = await PokedexAPIService.getPokemon(Number(num));
                 const species = await PokedexAPIService.getSpecies(Number(num));
 
-                console.log(species)
-
                 this.pokemon = PokemonService.getPokemonByNum(num);
                 this.pokemon.stats = PokemonService.getPokemonStatsBaseById(this.pokemon.id);
+                this.pokemon.moves = pokemonApi.moves.map(move => move.move);
                 this.pokemon.species = species;
                 this.pokemon.abilities = pokemonApi.abilities.map(ability => ability.ability);
                 this.pokemon.evolutions = PokemonService.getPokemonEvolutionsByPokemon(this.pokemon);
@@ -460,6 +452,14 @@
       left: 0;
       bottom: 0;
     }
+
+    &-content {
+      max-height: 290px;
+      overflow-y: auto;
+      @include mobile_old {
+        max-height: 200px;
+      }
+    }
   }
 
   .grid {
@@ -572,6 +572,13 @@
       font-size: 13px;
       font-weight: bold;
       //color: #2d2d2d;
+    }
+  }
+
+  .pokemon-moves {
+    .grid-item {
+      margin-bottom: 10px;
+      text-align: center !important;
     }
   }
 </style>
