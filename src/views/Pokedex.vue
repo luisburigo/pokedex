@@ -17,7 +17,7 @@
     <div class="pokedex-list" @scroll="handleScroll">
       <div v-for="pokemon in pokedex" :class="getColor(pokemon.type[0])"
            :key="pokemon.id"
-           @click="toPokemon(pokemon.num, $event)"
+           @click="toPokemon(pokemon.num)"
            class="pokemon">
         <div class="pokemon-stats">
           <div class="pokemon-name">
@@ -40,7 +40,6 @@
     import PokemonService from "../services/PokemonService";
     import ApplicationService from "@/services/ApplicationService";
 
-    let refs;
     const quantidadeListagem = 14;
     let pokemons = PokemonService.getAllPokemons();
 
@@ -60,8 +59,7 @@
         },
         methods: {
             getColor: ColorUtils.getColorByPokemonType,
-            toPokemon(num, event) {
-                refs = event.target;
+            toPokemon(num) {
                 this.$router.push({name: 'Pokemon', params: {num}})
             },
             loadMore() {
