@@ -4,6 +4,6 @@
 
 ---
 
-Pokedex developed in vue.js base in [UI design](https://dribbble.com/shots/6540871-Pokedex-App). 
+Pokedex developed in vue.js based in [UI design](https://dribbble.com/shots/6540871-Pokedex-App). 
 
-Get preview in this [link](https://reverent-ramanujan-0bdd3f.netlify.app/#/001).
+Get preview in this [link](https://reverent-ramanujan-0bdd3f.netlify.app/).
